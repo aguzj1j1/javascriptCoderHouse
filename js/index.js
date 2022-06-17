@@ -1,39 +1,48 @@
 class Cart {
-    constructor(cantidad = 0, precio = 0.0, producto = "", tieneDescuento = false, descuento = 0) {
-        this.cantidad = cantidad;
-        this.precio = precio;
-        this.producto = producto;
-        this.tieneDescuento = tieneDescuento;
-        this.descuento = descuento;
-        this.precioConDescuento = 0;
+    constructor() {
+        this.carrito = [];
     }
-    addCart(cantidad, precio, producto, tieneDescuento) {
+    addCart(id, cantidad, precio, producto, tieneDescuento) {
+        var descuentoAplicar, descuentoAplicado = 0;
         if (this.validateParam(cantidad, precio, producto).length > 0) {
             return this.validateParam(cantidad, precio, producto);
         }
-        this.cantidad = cantidad;
-        this.precio = precio;
-        this.producto = producto;
+
         if (tieneDescuento) {
-            this.tieneDescuento = tieneDescuento;
-            this.descuento = Number(prompt("ingrese valor del descuento"));
-            this.precioConDescuento = this.calculateDiscount(this.descuento, precio, cantidad);
+            descuentoAplicar = Number(prompt("ingrese valor del descuento"));
+            descuentoAplicado = this.calculateDiscount(this.descuento, precio, cantidad);
         }
+
+        this.carrito.push({
+            idProducto: id,
+            producto: producto,
+            precio: precio,
+            cantidad: cantidad,
+            descuento: descuentoAplicar,
+            precioConDescuento: descuentoAplicado
+        })
+
         return 'el producto ha sido agregado al carrito'
     }
-    addQuantity() {
-        this.cantidad = this.cantidad + 1;
+    addQuantity(idProducto) {
+        if (this.carrito.length == 0) {
+            return false;
+        }
+        for (const carro of this.carrito) {
+            if (carro.idProducto === idProducto) {
+                carro.cantidad = carro.cantidad + 1;
+            }
+        }
+
+    }
+    eliminarProducto(id) {
+        this.carrito = this.carrito.filter((item) => item.idProducto !== id);
     }
     calculateDiscount(descuento, precio, cantidad) {
         return (precio * cantidad) * descuento / 100;
     }
     destroyCart() {
-        this.cantidad = 0;
-        this.precio = 0.0;
-        this.producto = "";
-        this.tieneDescuento = false;
-        this.descuento = 0;
-        this.precioConDescuento = 0;
+      this.carrito = [];
     }
     validateParam(cantidad, precio, producto) {
         if (cantidad === 0) {
@@ -48,11 +57,41 @@ class Cart {
         return false;
     }
 }
-var prueba1 = new Cart()
-    alert(prueba1.addCart(1, 50, "prueba1", true))
-    prueba1.addQuantity();
-    prueba1.destroyCart();
-var prueba2 = new Cart();
-    alert(prueba2.addCart(10, 20, "prueba2", false))
-    prueba2.addQuantity();
-    prueba2.destroyCart();
+let productos = [{
+    idProducto: 1,
+    cantidad: 1,
+    precio: 30,
+    producto: 'Helado 1.5kg',
+    descuento: false
+}, {
+    idProducto: 2,
+    cantidad: 3,
+    precio: 5,
+    producto: 'Cebollas',
+    descuento: false
+}, {
+    idProducto: 3,
+    cantidad: 1,
+    precio: 5,
+    producto: 'Serenito',
+    descuento: false
+}];
+var carrito = new Cart();
+addCarrito = () => {
+    
+    for (const producto of productos) {
+        carrito.addCart(producto.idProducto,producto.cantidad, producto.precio, producto.producto, producto.descuento);
+        console.log(`el producto fue agregado  ${producto.producto}`)
+    }
+
+}
+deleteProducto = () => {
+    carrito.eliminarProducto(1);
+}
+addCarrito();
+deleteProducto();
+console.log(carrito.carrito)
+
+carrito.addQuantity(2);
+console.log(carrito.carrito)
+
