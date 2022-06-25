@@ -35,6 +35,9 @@ class Cart {
         }
 
     }
+    productsInCart(){
+        return this.carrito.length;
+    }
     eliminarProducto(id) {
         this.carrito = this.carrito.filter((item) => item.idProducto !== id);
     }
@@ -61,34 +64,38 @@ let productos = [{
     idProducto: 1,
     cantidad: 1,
     precio: 30,
-    producto: 'Helado 1.5kg',
-    descuento: false
+    producto: 'Crema hidratante día',
+    descuento: false,
+    stock:3
 }, {
     idProducto: 2,
-    cantidad: 3,
+    cantidad: 1,
     precio: 5,
-    producto: 'Cebollas',
+    producto: 'Crema hidratante Noche',
     descuento: false
 }, {
     idProducto: 3,
     cantidad: 1,
     precio: 5,
-    producto: 'Serenito',
+    producto: 'Protector solar 65',
     descuento: false
 }];
 var carrito = new Cart();
-addCarrito = () => {
-    
-    for (const producto of productos) {
-        carrito.addCart(producto.idProducto,producto.cantidad, producto.precio, producto.producto, producto.descuento);
-        console.log(`el producto fue agregado  ${producto.producto}`)
-    }
-
+addCarrito = (id) => {
+    let domCart = document.querySelector("#cantidad");
+    let element = '<span id="cantidad">@elemento</span>'
+    let productoToCart = productos.filter((item) => item.idProducto == id);  
+     for (const producto of productoToCart) {
+         carrito.addCart(producto.idProducto,producto.cantidad, producto.precio, producto.producto, producto.descuento);
+         console.log(`el producto fue agregado  ${producto.producto}`)
+     }
+     
+    domCart.innerHTML = element.replace(/@elemento/g,carrito.productsInCart());
 }
 deleteProducto = () => {
     carrito.eliminarProducto(1);
 }
-addCarrito();
+// addCarrito();
 deleteProducto();
 console.log(carrito.carrito)
 

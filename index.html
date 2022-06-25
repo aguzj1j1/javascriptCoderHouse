@@ -5,9 +5,111 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
     <script src='js/index.js'></script>
 
 </head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container ">
+            <!-- Brand -->
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse " id="collapsibleNavbar">
+                <ul class="navbar-nav ">
+                    <li class="nav-item  dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Loreal
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            Salud
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            Maquillaje
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            Bebes
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            Cuidado Corporal
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-block d-sm-block col-md-6 carritoBtnMobile">
+                <div class="">
+                    <a href="/views/CarritoView.html">
+                        <img src="imgs/CarritoNavBar.png" width="50" height="50px">
+                        <br>
+                        <h9>Ver Carrito</h9>
+                        <div id="cantidad">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-4  d-flex justify-content-center">
+                    <div class="card cardCatalogo">
+                        <img class="card-img-top img-fluid" src="imgs/7793742002915.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h3 class="card-title cardProductoT">asdsads</h3>
+                            <h4 class="card-subtitle cardProductoST">asdasd</h4>
+                            <h3>250</h3>
+                            <button class="btnprimary cardProductoBTN" onclick="addCarrito(2)">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4  d-flex justify-content-center">
+                    <div class="card cardCatalogo">
+                        <img class="card-img-top img-fluid" src="imgs/7793742002922.jpg" alt="Card image cap">
+                        <div class="card-block">
+
+                            <h3 class="card-title cardProductoT">asdsads</h3>
+                            <h4 class="card-subtitle cardProductoST">asdasd</h4>
+                            <h3>250</h3>
+                            <button class="btnprimary cardProductoBTN" onclick="addCarrito(2)">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4  d-flex justify-content-center">
+                    <div class="card cardCatalogo">
+                        <img class="card-img-top img-fluid" src="imgs/7793742003264.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <!-- INPUT PARA USAR EN EL CARRITO Y AGREGAR AL LOCAL STORAGE -->
+                            <h3 class="card-title cardProductoT">asdsads</h3>
+                            <h4 class="card-subtitle cardProductoST">asdasd</h4>
+                            <h3>250</h3>
+                            <button class="btnprimary cardProductoBTN" onclick="addCarrito(3)">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
 </html>
