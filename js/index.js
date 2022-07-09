@@ -1,28 +1,35 @@
 class Cart {
     constructor() {
-        this.carrito = [];
+        this.carrito = this.getProductosLocalStorage() || [];
     }
-    addCart(id, cantidad, precio, producto, tieneDescuento) {
-        var descuentoAplicar, descuentoAplicado = 0;
-        if (this.validateParam(cantidad, precio, producto).length > 0) {
-            return this.validateParam(cantidad, precio, producto);
+    addCart(id, cantidad, precio, producto, tieneDescuento,imagenes) {
+        var productos = this.getProductosLocalStorage() || [];
+        debugger;
+        if (productos.filter(actual => actual.idProducto == id).length > 0) {
+            this.addQuantity(id);
+        } else {
+            var descuentoAplicar, descuentoAplicado = 0;
+            if (this.validateParam(cantidad, precio, producto).length > 0) {
+                return this.validateParam(cantidad, precio, producto);
+            }
+
+            if (tieneDescuento) {
+                descuentoAplicar = Number(prompt("ingrese valor del descuento"));
+                descuentoAplicado = this.calculateDiscount(this.descuento, precio, cantidad);
+            }
+
+            this.carrito.push({
+                idProducto: id,
+                producto: producto,
+                precio: precio,
+                cantidad: cantidad,
+                descuento: descuentoAplicar,
+                precioConDescuento: descuentoAplicado,
+                imagenes:imagenes
+            })
+            localStorage.setItem("carrito", JSON.stringify(this.carrito));
+            return 'el producto ha sido agregado al carrito'
         }
-
-        if (tieneDescuento) {
-            descuentoAplicar = Number(prompt("ingrese valor del descuento"));
-            descuentoAplicado = this.calculateDiscount(this.descuento, precio, cantidad);
-        }
-
-        this.carrito.push({
-            idProducto: id,
-            producto: producto,
-            precio: precio,
-            cantidad: cantidad,
-            descuento: descuentoAplicar,
-            precioConDescuento: descuentoAplicado
-        })
-
-        return 'el producto ha sido agregado al carrito'
     }
     addQuantity(idProducto) {
         if (this.carrito.length == 0) {
@@ -33,9 +40,10 @@ class Cart {
                 carro.cantidad = carro.cantidad + 1;
             }
         }
+        localStorage.setItem("carrito", JSON.stringify(this.carrito));
 
     }
-    productsInCart(){
+    productsInCart() {
         return this.carrito.length;
     }
     eliminarProducto(id) {
@@ -45,7 +53,7 @@ class Cart {
         return (precio * cantidad) * descuento / 100;
     }
     destroyCart() {
-      this.carrito = [];
+        this.carrito = [];
     }
     validateParam(cantidad, precio, producto) {
         if (cantidad === 0) {
@@ -59,38 +67,44 @@ class Cart {
         }
         return false;
     }
+    getProductosLocalStorage() {
+        return JSON.parse(localStorage.getItem("carrito"))
+    }
 }
 let productos = [{
     idProducto: 1,
     cantidad: 1,
     precio: 30,
-    producto: 'Crema hidratante día',
+    producto: 'Dermaglos Crema hidratante día',
     descuento: false,
-    stock:3
+    stock: 3,
+    imagenes:'../imgs/7793742002915.jpg'
 }, {
     idProducto: 2,
     cantidad: 1,
     precio: 5,
-    producto: 'Crema hidratante Noche',
-    descuento: false
+    producto: 'Dermaglos Crema hidratante Noche',
+    descuento: false,
+    imagenes: '../imgs/7793742002922.jpg'
 }, {
     idProducto: 3,
     cantidad: 1,
     precio: 5,
-    producto: 'Protector solar 65',
-    descuento: false
+    producto: 'Dermaglos  Protector solar 65',
+    descuento: false,
+    imagenes: '../imgs/7793742003264.jpg'
 }];
 var carrito = new Cart();
 addCarrito = (id) => {
     let domCart = document.querySelector("#cantidad");
     let element = '<span id="cantidad">@elemento</span>'
-    let productoToCart = productos.filter((item) => item.idProducto == id);  
-     for (const producto of productoToCart) {
-         carrito.addCart(producto.idProducto,producto.cantidad, producto.precio, producto.producto, producto.descuento);
-         console.log(`el producto fue agregado  ${producto.producto}`)
-     }
-     
-    domCart.innerHTML = element.replace(/@elemento/g,carrito.productsInCart());
+    let productoToCart = productos.filter((item) => item.idProducto == id);
+    for (const producto of productoToCart) {
+        carrito.addCart(producto.idProducto, producto.cantidad, producto.precio, producto.producto, producto.descuento,producto.imagenes);
+        console.log(`el producto fue agregado  ${producto.producto}`)
+    }
+
+    domCart.innerHTML = element.replace(/@elemento/g, carrito.productsInCart());
 }
 deleteProducto = () => {
     carrito.eliminarProducto(1);

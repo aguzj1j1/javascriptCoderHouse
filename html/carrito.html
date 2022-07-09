@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <script src='js/index.js'></script>
+    <script src='../js/carrito.js'></script>
 
 </head>
 
@@ -53,7 +53,7 @@
             <div class="d-block d-sm-block col-md-6 carritoBtnMobile">
                 <div class="">
                     <a href="/views/CarritoView.html">
-                        <img src="imgs/CarritoNavBar.png" width="50" height="50px">
+                        <img src="../imgs/CarritoNavBar.png" width="50" height="50px">
                         <br>
                         <h9>Ver Carrito</h9>
                         <div id="cantidad">
@@ -66,50 +66,38 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-md-4  d-flex justify-content-center">
-                    <div class="card cardCatalogo">
-                        <img class="card-img-top img-fluid" src="imgs/7793742002915.jpg" alt="Card image cap">
-                        <div class="card-block">
-                            <h3 class="card-title cardProductoT">asdsads</h3>
-                            <h4 class="card-subtitle cardProductoST">asdasd</h4>
-                            <h3>250</h3>
-                            <button class="btnprimary cardProductoBTN" onclick="addCarrito(1)">Agregar al
-                                carrito</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-4  d-flex justify-content-center">
-                    <div class="card cardCatalogo">
-                        <img class="card-img-top img-fluid" src="imgs/7793742002922.jpg" alt="Card image cap">
-                        <div class="card-block">
+                <h3 class="TitleCarrito">01. Resumen del carrito</h2>
+            </div>
 
-                            <h3 class="card-title cardProductoT">asdsads</h3>
-                            <h4 class="card-subtitle cardProductoST">asdasd</h4>
-                            <h3>250</h3>
-                            <button class="btnprimary cardProductoBTN" onclick="addCarrito(2)">Agregar al
-                                carrito</button>
+            <!--Tabla-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <table class="table  tablaCarrito">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Precio Unitario</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productos">
+
+                            </table>
+                        </table>
+                    </div>
+                    <hr class="separator1">
+                    <!--DownBar Carrito-->
+                    <br><br>
+                    <div class="row downBarCar">
+                        <div class="col-xs-12 col-md-6  " id="totalCarrito1">
+                            @Totals
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-md-4  d-flex justify-content-center">
-                    <div class="card cardCatalogo">
-                        <img class="card-img-top img-fluid" src="imgs/7793742003264.jpg" alt="Card image cap">
-                        <div class="card-block">
-                            <!-- INPUT PARA USAR EN EL CARRITO Y AGREGAR AL LOCAL STORAGE -->
-                            <h3 class="card-title cardProductoT">asdsads</h3>
-                            <h4 class="card-subtitle cardProductoST">asdasd</h4>
-                            <h3>250</h3>
-                            <button class="btnprimary cardProductoBTN" onclick="addCarrito(3)">Agregar al
-                                carrito</button>
-                        </div>
-                    </div>
+                    <br>
+                    <hr class="separator1">
                 </div>
             </div>
         </div>
     </main>
 </body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
-</html>

@@ -1,0 +1,20 @@
+.TitleCarrito{
+    padding-left: 40px;
+}
+.tablaCarrito th{
+    text-align: center;
+    padding-top:30px;
+    padding-bottom: 0;
+    font-weight: normal;
+    color:#4f4f4f;
+}
+.separator1{
+    border-top: 1px solid #8c8b8b;
+}
+.downBarCar{
+    text-align: center;
+}
+
+table{
+    width: 50%;
+}
