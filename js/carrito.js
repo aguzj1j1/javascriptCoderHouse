@@ -33,8 +33,14 @@ renderCarrito = () => {
     debugger;
     domInner.innerHTML = dom;
 }
-let getProductosLocalStorage = () => {
-    return JSON.parse(localStorage.getItem("carrito"))
+getProductosLocalStorage=()=> {
+    let productosLocalStorage = JSON.parse(localStorage.getItem("carrito")) || [];
+    console.log(productosLocalStorage)
+    let productos = []
+        for (const iterator of productosLocalStorage) {
+                productos.push(iterator);
+        }
+    return productos;
 }
 
 window.onload = function() {
