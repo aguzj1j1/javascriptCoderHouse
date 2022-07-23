@@ -1,0 +1,25 @@
+ [{
+    "idProducto": 1,
+    "cantidad": 1,
+    "precio": 30,
+    "producto": "Dermaglos Crema hidratante día",
+    "descuento": false,
+    "stock": 3,
+    "imagenes":"../imgs/7793742002915.jpg"
+}, {
+    "idProducto": 2,
+    "cantidad": 1,
+    "precio": 5,
+    "producto": "Dermaglos Crema hidratante Noche",
+    "descuento": false,
+    "stock": 3,
+    "imagenes": "../imgs/7793742002922.jpg"
+}, {
+    "idProducto": 3,
+    "cantidad": 1,
+    "precio": 5,
+    "producto": "Dermaglos  Protector solar 65",
+    "descuento": false,
+    "stock": 3,
+    "imagenes": "../imgs/7793742003264.jpg"
+}]
