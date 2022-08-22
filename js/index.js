@@ -103,7 +103,7 @@ class Cart {
 }
 
 loadProductos = () => {
-    return fetch('/data/data.json')
+    return fetch('./data/data.json')
         .then(response => response.json())
         .then((data) => {
             return data;
